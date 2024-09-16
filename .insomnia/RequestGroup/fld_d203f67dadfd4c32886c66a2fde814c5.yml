@@ -1,0 +1,23 @@
+_id: fld_d203f67dadfd4c32886c66a2fde814c5
+type: RequestGroup
+parentId: wrk_6359e2d6e546497e95d53512215c6063
+modified: 1726478499814
+created: 1726478499814
+name: FolderWithEnv
+description: ""
+environment:
+  folderEnv: fromFolder
+environmentPropertyOrder: null
+metaSortKey: -1668533312225
+preRequestScript: |-
+  insomnia.environment.set('onlySetByFolderPreScript', 888);
+  insomnia.test('folder-pre-check', () => {
+    insomnia.expect(200).to.eql(200);
+  });
+afterResponseScript: |-
+  insomnia.environment.unset('onlySetByFolderPreScript');
+  insomnia.test('folder-post-check', () => {
+    insomnia.expect(insomnia.response.code).to.eql(200);
+  });
+authentication: null
+headers: null

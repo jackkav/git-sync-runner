@@ -1,0 +1,48 @@
+_id: req_8914e48f63e240f09cbaa898be72184c
+type: Request
+parentId: fld_d203f67dadfd4c32886c66a2fde814c5
+modified: 1726478499814
+created: 1726478499814
+url: http://127.0.0.1:4010/echo
+name: req1
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"scope": "{{ _.scope }}",
+    	"value": "{{ _.value }}"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+authentication: {}
+preRequestScript: |-
+  insomnia.test('req1-pre-check', () => {
+    insomnia.expect(200).to.eql(200);
+  });
+  insomnia.test.skip('req1-pre-check-skipped', () => {
+    insomnia.expect(200).to.eql(200);
+  });  
+
+  if (insomnia.iterationData.get('scope') === 'uploda data') {
+  	insomnia.execution.setNextRequest('req3');
+  }
+metaSortKey: -1636141014553
+isPrivate: false
+pathParameters: null
+afterResponseScript: |-
+  insomnia.test('req1-post-check', () => {
+      insomnia.expect(insomnia.response.code).to.eql(200);
+  });
+  insomnia.test('req1-post-check-failed', () => {
+      insomnia.expect(insomnia.response.code).to.eql(201);
+  });      
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

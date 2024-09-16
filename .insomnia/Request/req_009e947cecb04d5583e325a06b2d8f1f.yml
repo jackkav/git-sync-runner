@@ -1,0 +1,30 @@
+_id: req_009e947cecb04d5583e325a06b2d8f1f
+type: Request
+parentId: wrk_6359e2d6e546497e95d53512215c6063
+modified: 1726478499815
+created: 1726478499815
+url: http://127.0.0.1:4010/echo
+name: req2
+description: ""
+method: POST
+body: {}
+parameters: []
+headers: []
+authentication: {}
+preRequestScript: |-
+  insomnia.test('req2-pre-check', () => {
+  insomnia.expect(200).to.eql(200);
+  });
+metaSortKey: -1636141014555
+isPrivate: false
+pathParameters: null
+afterResponseScript: |-
+  insomnia.test('req2-post-check', () => {
+      insomnia.expect(insomnia.response.code).to.eql(200);
+  });
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
