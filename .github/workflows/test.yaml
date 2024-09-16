@@ -1,0 +1,10 @@
+name: Run Insomnia Collection
+on: push
+jobs:
+  automated-api-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: kong/setup-inso@v1.1.6
+      - name: Run API tests
+        run: inso run collection wrk_6359e2 -e env_510b1f
